@@ -7,15 +7,16 @@ import { authInstance } from "./firebase";
 export async function createAccount(email, password) {
   const account = { isCreated: false, payload: null };
   try {
-    const credential = await createUserWithEmailAndPassword(
+    const userCredential = await createUserWithEmailAndPassword(
       authInstance,
       email,
       password
     );
     account.isCreated = true;
-    account.payload = credential.user.uid;
+    account.payload = userCredential.user.uid;
   } catch (error) {
-    account.payload = error;
+    console.error("authentification.js error", error);
+    account.payload = error.code;
   }
 
   return account;

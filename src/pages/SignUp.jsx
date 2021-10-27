@@ -7,7 +7,8 @@ import { createAccount } from "scripts/authentification";
 
 export default function SignUp() {
     // Local state
-    const [user, setUser] = useState({ name: "", email: "", password: ""});
+    const [user, setUser] = useState({ name: "", city: "", email: "", password: ""});
+    const [errorMassage, setErrorMessage] = useState("");
 
     // Methods
     function onChange(key, value) {
@@ -17,8 +18,19 @@ export default function SignUp() {
 
     async function onSubmit(event) {
         event.preventDefault();
+        setErrorMessage("");
+        const account = await createAccount(user.email, user.password);
+
+        account.isCreated ? onSuccess(account.payload) : onFailure(account.payload);
     }
 
+    function onSuccess(uid){
+        alert("Account almost created");
+    }
+
+    function onFailure(message){
+        setErrorMessage(message);
+    }
     // Components
     const InputFields = fields.map((item) => (
         <InputField key={item.key} options={item} state={user[item.key]} onChange={onChange} />
@@ -29,6 +41,7 @@ export default function SignUp() {
             <h1>Create an account</h1>
             <form onSubmit={onSubmit}>
                 {InputFields}
+                <p>{errorMassage}</p>
                 <div>
                     <button>Create account</button>
                 </div>
