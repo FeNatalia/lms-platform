@@ -1,5 +1,6 @@
 // Project files
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import InputField from "components/InputField";
 import fields from "data/fields-signup.json";
 
@@ -32,6 +33,7 @@ export default function SignUp() {
                     <button>Create account</button>
                 </div>
             </form>
+            <Link to="/login">Login instead</Link>
         </div>
     )
 }

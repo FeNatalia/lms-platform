@@ -9,6 +9,7 @@ export default function Unlogged(){
     return (
         <>
         <Route exact path="/" component={Login} />
+        <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
         </>
     )
