@@ -1,7 +1,7 @@
 // Project files
 import { useState } from "react";
-import InputField from "../components/InputField";
-import fields from "../data/fields-signup.json";
+import InputField from "components/InputField";
+import fields from "data/fields-signup.json";
 
 export default function SignUp() {
     // Local state

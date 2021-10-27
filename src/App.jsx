@@ -1,14 +1,14 @@
 // NPM Packages
 import { BrowserRouter, Route } from "react-router-dom";
-import { app } from "./scripts/firebase"; 
+import { app } from "scripts/firebase"; 
 import { getFirestore } from "firebase/firestore/lite";
 import { useEffect } from "react";
-import { getCollection } from "./scripts/fireStore";
+import { getCollection } from "scripts/fireStore";
 
 // Project files
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
+import Home from "pages/Home";
+import Login from "pages/Login";
+import SignUp from "pages/SignUp";
 
 export default function App() {
   // Properties
