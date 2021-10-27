@@ -1,0 +1,16 @@
+[
+    {
+      "key": "email",
+      "label": "Email",
+      "placeholder": "john@mail.com",
+      "type": "email",
+      "required": true
+    },
+    {
+      "key": "password",
+      "label": "Password",
+      "placeholder": "********",
+      "type": "password",
+      "required": true
+    }
+  ]

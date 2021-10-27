@@ -16,7 +16,7 @@ export default function App() {
 
   // Methods
   useEffect( () => {
-    getCollection(database, "students").then((result) => {
+    getCollection(database, "users").then((result) => {
       console.log(result);
     })
   }, [database])

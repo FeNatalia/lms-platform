@@ -1,0 +1,30 @@
+[
+    {
+      "key": "name",
+      "label": "Name",
+      "placeholder": "John Doe",
+      "type": "text",
+      "required": true
+    },
+    {
+      "key": "city",
+      "label": "City",
+      "placeholder": "New York",
+      "type": "text",
+      "required": true
+    },
+    {
+      "key": "email",
+      "label": "Email",
+      "placeholder": "john@mail.com",
+      "type": "email",
+      "required": true
+    },
+    {
+      "key": "password",
+      "label": "Password",
+      "placeholder": "********",
+      "type": "password",
+      "required": true
+    }
+  ]
