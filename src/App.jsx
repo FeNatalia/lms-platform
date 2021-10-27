@@ -1,38 +1,36 @@
 // NPM Packages
-import { BrowserRouter, Route } from "react-router-dom";
-import { app } from "./scripts/firebase"; 
-import { getFirestore } from "firebase/firestore/lite";
+import { BrowserRouter, Switch } from "react-router-dom";
 import { useEffect } from "react";
-import { getCollection } from "./scripts/fireStore";
+import { getCollection } from "scripts/fireStore";
 
 // Project files
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
+import { useAuth } from "state/AuthProvider";
+import Logged from "routes/Logged";
+import Unlogged from "routes/Unlogged";
 
 export default function App() {
-  // Properties
-  const database = getFirestore(app)
-
   // Methods
   useEffect( () => {
-    getCollection(database, "students").then((result) => {
+    getCollection("users").then((result) => {
       console.log(result);
     })
-  }, [database])
+  }, [])
 
   useEffect( () => {
-    getCollection(database, "courses").then((result) => {
+    getCollection( "courses").then((result) => {
       console.log(result);
     })
-  }, [database])
+  }, [])
+
+  // Global state
+  const { isLogged } = useAuth();
 
   return (
     <div className="App">
       <BrowserRouter>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={SignUp} />
+        <Switch>
+          {isLogged? <Logged/> : <Unlogged/>}
+        </Switch>
       </BrowserRouter>
     </div>
   );

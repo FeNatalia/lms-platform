@@ -1,6 +1,8 @@
 // NPM Package
 import { initializeApp } from "firebase/app";
-import "firebase/auth";
+import { getFirestore } from "firebase/firestore/lite";
+import { getAuth } from "firebase/auth";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -13,4 +15,7 @@ const firebaseConfiguration = {
   appId: "1:8423307134:web:3f0ff3b6029fbec9b6252f",
 };
 
-export const app = initializeApp(firebaseConfiguration);
+const firebaseInstance = initializeApp(firebaseConfiguration);
+
+export const fireStoreInstance = getFirestore(firebaseInstance);
+export const authInstance = getAuth(firebaseInstance);
