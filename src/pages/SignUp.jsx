@@ -1,31 +1,43 @@
-// Project files
+// NPM Packages
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
+
+// Project files
 import InputField from "components/InputField";
 import fields from "data/fields-signup.json";
+import { useAuth } from "state/AuthProvider";
 import { createAccount } from "scripts/authentification";
+import { createDocumentWithId} from "scripts/fireStore";
 
 export default function SignUp() {
+    // Global state
+    const { setIsLogged, setUser } = useAuth();
+    const history = useHistory();
+
     // Local state
-    const [user, setUser] = useState({ name: "", city: "", email: "", password: ""});
+    const [form, setForm] = useState({});
     const [errorMassage, setErrorMessage] = useState("");
 
     // Methods
     function onChange(key, value) {
         const field = { [key] : value };
-        setUser({ ...user, ...field});
+        setForm({ ...form, ...field});
     }
 
     async function onSubmit(event) {
         event.preventDefault();
         setErrorMessage("");
-        const account = await createAccount(user.email, user.password);
+        const account = await createAccount(form.email, form.password);
 
         account.isCreated ? onSuccess(account.payload) : onFailure(account.payload);
     }
 
-    function onSuccess(uid){
-        alert("Account almost created");
+    async function onSuccess(uid){
+        const newUser = { name: form.name, city: form.city, isTeacher: false };
+        await createDocumentWithId("users", uid, newUser);
+        setIsLogged(true);
+        setUser(newUser);
+        history.push("/");
     }
 
     function onFailure(message){
@@ -33,7 +45,7 @@ export default function SignUp() {
     }
     // Components
     const InputFields = fields.map((item) => (
-        <InputField key={item.key} options={item} state={user[item.key]} onChange={onChange} />
+        <InputField key={item.key} options={item} state={form[item.key]} onChange={onChange} />
     ));
 
     return (

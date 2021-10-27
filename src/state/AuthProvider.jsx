@@ -6,8 +6,8 @@ const AuthContext = createContext(null);
 
 export function AuthProvider({ children}) {
     // Local state
-    const [user, setUser] = useState({ name: "Natalia"});
     const [isLogged, setIsLogged] = useState(false);
+    const [user, setUser] = useState({});
 
     return (
         <AuthContext.Provider value={{ user, setUser, isLogged, setIsLogged }}>
