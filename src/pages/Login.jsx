@@ -1,14 +1,19 @@
 // NPM Packages
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 // Project files
 import InputField  from "../components/InputField";
 import fields from "../data/fields-login.json";
 import { signIn } from "scripts/authentification";
 import { getDocument } from "scripts/fireStore";
+import { useAuth } from "state/AuthProvider";
 
 export default function Login() {
+    // Global state
+    const { setUser, setIsLogged } = useAuth();
+    const history = useHistory();
+
     // Local state
     const [form, setForm] = useState({});
     const [errorMassage, setErrorMessage] = useState("");
@@ -28,8 +33,10 @@ export default function Login() {
     }
 
     async function onSuccess(uid){
-        const user = await getDocument("users", uid)
-        console.log("Login.jsx onSuccess() user", user);
+        const loggedUser = await getDocument("users", uid)
+        setUser(loggedUser);
+        setIsLogged(true);
+        history.push("/");
     }
 
     function onFailure(message){

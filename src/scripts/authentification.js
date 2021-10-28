@@ -6,6 +6,7 @@ import {
 
 // Project files
 import { authInstance } from "./firebase";
+//import { onAuthStateChanged } from "firebase/auth";
 
 export async function createAccount(email, password) {
   const account = { isCreated: false, payload: "" };
@@ -42,3 +43,19 @@ export async function signIn(email, password) {
 
   return account;
 }
+
+/*export function getLoginUID() {
+  let loginUID = "";
+
+  onAuthStateChanged(authInstance, (user) => {
+    if (user) {
+      console.log("onAuthStateChanged", user);
+      console.log("onAuthStateChanged uid", user.uid);
+      loginUID = user.uid;
+    } else {
+      console.log("user not logged in");
+    }
+  });
+  console.log("getLoginUID(), loginUID", loginUID);
+  return loginUID;
+}*/
