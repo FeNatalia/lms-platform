@@ -5,13 +5,13 @@ import { useHistory, Link } from "react-router-dom";
 // Project files
 import InputField from "components/InputField";
 import fields from "data/fields-signup.json";
-import { useAuth } from "state/AuthProvider";
+//import { useAuth } from "state/AuthProvider";
 import { createAccount } from "scripts/authentification";
 import { createDocumentWithId} from "scripts/fireStore";
 
 export default function SignUp() {
     // Global state
-    const { setIsLogged, setUser } = useAuth();
+    //const { setIsLogged, setUser } = useAuth();
     const history = useHistory();
 
     // Local state
@@ -35,8 +35,6 @@ export default function SignUp() {
     async function onSuccess(uid){
         const newUser = { name: form.name, city: form.city, isTeacher: false };
         await createDocumentWithId("users", uid, newUser);
-        setIsLogged(true);
-        setUser(newUser);
         history.push("/");
     }
 

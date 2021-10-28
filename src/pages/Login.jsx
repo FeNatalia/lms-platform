@@ -1,29 +1,56 @@
 // NPM Packages
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 // Project files
-import  InputField  from "../components/InputField";
+import InputField  from "../components/InputField";
 import fields from "../data/fields-login.json";
+import { signIn } from "scripts/authentification";
+import InputCheckbox from "components/InputCheckbox";
+import { getDocument } from "scripts/fireStore";
+import { useAuth } from "state/AuthProvider";
 
 export default function Login() {
+    // Global state
+    const { setUser, setIsLogged } = useAuth();
+    const history = useHistory();
+
     // Local state
-    const [user, setUser] = useState( { email: "", password: "" })
+    const [form, setForm] = useState({});
+    const [remember, setRemember] = useState(false);
+    const [errorMassage, setErrorMessage] = useState("");
 
     // Methods
     function onChange(key, value) {
         const field = { [key]: value };
-        setUser({...user, ...field});
+        setForm({...form, ...field});
     }
 
-    function onSubmit(event) {
+    async function onSubmit(event) {
         event.preventDefault();
-        alert("On Submit...")
+        setErrorMessage("");
+        const account = await signIn(form.email, form.password);
+
+        account.isLogged ? onSuccess(account.payload) : onFailure(account.payload);
+    }
+
+    async function onSuccess(uid){
+        const document = await getDocument("users", uid)
+        console.log("login.jsx database", uid);
+        //const loggedUser = await getDocument("users", uid)
+        setUser(document);
+        setIsLogged(true);
+        if (remember) localStorage.setItem("uid", uid);
+        history.push("/");
+    }
+
+    function onFailure(message){
+        setErrorMessage(message);
     }
 
     // Components
     const InputFields = fields.map((item) => (
-        <InputField key={item.key} options={item} state={user[item.key]} onChange={onChange} />
+        <InputField key={item.key} options={item} state={form[item.key]} onChange={onChange} />
     ));
 
     return (
@@ -31,6 +58,10 @@ export default function Login() {
             <h1>Login</h1>
             <form onSubmit={onSubmit}>
                 {InputFields}
+                <InputCheckbox state={[remember, setRemember]}>
+                    Remember me
+                </InputCheckbox>
+                <p>{errorMassage}</p>
                 <div>
                     <button>Login</button>
                 </div>
