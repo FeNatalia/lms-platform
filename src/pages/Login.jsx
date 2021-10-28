@@ -6,6 +6,7 @@ import { Link, useHistory } from "react-router-dom";
 import InputField  from "../components/InputField";
 import fields from "../data/fields-login.json";
 import { signIn } from "scripts/authentification";
+import InputCheckbox from "components/InputCheckbox";
 import { getDocument } from "scripts/fireStore";
 import { useAuth } from "state/AuthProvider";
 
@@ -16,6 +17,7 @@ export default function Login() {
 
     // Local state
     const [form, setForm] = useState({});
+    const [remember, setRemember] = useState(false);
     const [errorMassage, setErrorMessage] = useState("");
 
     // Methods
@@ -33,9 +35,12 @@ export default function Login() {
     }
 
     async function onSuccess(uid){
-        const loggedUser = await getDocument("users", uid)
-        setUser(loggedUser);
+        const document = await getDocument("users", uid)
+        console.log("login.jsx database", uid);
+        //const loggedUser = await getDocument("users", uid)
+        setUser(document);
         setIsLogged(true);
+        if (remember) localStorage.setItem("uid", uid);
         history.push("/");
     }
 
@@ -53,6 +58,9 @@ export default function Login() {
             <h1>Login</h1>
             <form onSubmit={onSubmit}>
                 {InputFields}
+                <InputCheckbox state={[remember, setRemember]}>
+                    Remember me
+                </InputCheckbox>
                 <p>{errorMassage}</p>
                 <div>
                     <button>Login</button>

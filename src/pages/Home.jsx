@@ -1,17 +1,28 @@
 // NPM Packages
+//import { signOut } from "firebase/auth";
 import { useHistory } from "react-router"
+//import { authInstance } from "scripts/firebase";
 
 // Project files
 import { useAuth } from "state/AuthProvider";
 
 export default function Home() {
     // Global state
-    const { user } = useAuth();
+    const { user, setUser, setIsLogged } = useAuth();
     const history = useHistory();
     // Methods
     function onLogout() {
-        alert("You are logged out..."); 
+        localStorage.setItem("uid", "");
+        setUser({});
+        setIsLogged(false);
         history.push("/login");
+
+        /*signOut(authInstance).then(() => {
+            alert("You are logged out")
+            setIsLogged(false);
+        }).catch((error) => {
+            console.error("error", error);
+        });*/
     }
 
     return (
