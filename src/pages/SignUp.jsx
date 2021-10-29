@@ -7,6 +7,7 @@ import InputField from "components/InputField";
 import fields from "data/fields-signup.json";
 import { createAccount } from "scripts/authentification";
 import { createDocumentWithId} from "scripts/fireStore";
+import Logo from "assets/Logo.png";
 
 export default function SignUp() {
     // Global state
@@ -46,18 +47,22 @@ export default function SignUp() {
     ));
 
     return (
-        <div>
-            <h3>Register to OpenEyes</h3>
-            <form onSubmit={onSubmit}>
-                <div>Logo</div>
-                {InputFields}
-                <p>{errorMassage}</p>
-                <div>
+        <div id="auth-page">
+            <header>
+                <h3>Register to OpenEyes</h3>
+            </header>
+            <div className="auth-page-content">
+                <form onSubmit={onSubmit}>
+                    <div className="logo">
+                        <img src={Logo} alt="an icon of an eye and a leaf"/>
+                    </div>
+                    {InputFields}
+                    <p>{errorMassage}</p>
                     <button>Register</button>
-                </div>
-            </form>
-            <Link to="/login">Login instead</Link>
-            <Link to="/">Go to main</Link>
+                    <Link to="/login">Login instead</Link>
+                    <Link to="/">Go to main</Link>
+                </form>
+            </div>
         </div>
     )
 }

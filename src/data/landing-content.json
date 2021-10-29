@@ -1,0 +1,19 @@
+[
+    {
+        "id": 1,
+        "photo": "indigenous1.jpg",
+        "title": "Why indigenous cultures?",
+        "fact1": "370 million people in more than 70 countries identify themselves as Indigenous Peoples",
+        "fact2": "5000 different Indigenous People’s in the world",
+        "fact3": "1/3 of the world’s 900 million extremely poor rural people are Indigenous Peoples"
+    },
+
+    {
+        "id": 2,
+        "photo": "indigenous2.jpg",
+        "title": "Why study with us?",
+        "fact1": "Our Learning Management System is easy to use",
+        "fact2": "You can find hundreds of free courses in different  indigenous cultures in one place",
+        "fact3": "Study in your own pase, the content is always available!"
+    }
+]

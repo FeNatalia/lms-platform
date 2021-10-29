@@ -39,12 +39,18 @@ export default function Home() {
     ));
 
     return (
-        <div>
-            {user.isTeacher? <h3>My teaching</h3> : <h3>My learning</h3>}
-            <p>Welcome to OpenEyes E-learning, {user.name}</p>
-            <h2>My courses</h2>
-            {CourseItems}
-            {user.isTeacher && <button>Add course</button>}
+        <div id="home-page">
+            <header>
+                {user.isTeacher? <h3>My teaching</h3> : <h3>My learning</h3>}
+            </header>
+            <div className="home-page-content">
+                <p>You logged in as {user.name}</p>
+                <h2>My courses</h2>
+                <div className="courses">
+                    {CourseItems}
+                </div>
+                {user.isTeacher && <button>Add course</button>}
+            </div>
         </div>
     )
 }

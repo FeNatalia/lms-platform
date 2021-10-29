@@ -1,0 +1,83 @@
+#landing-page header {
+    height: 250px;
+    background-image: url("assets/pictures/landing.jpg");
+    background-size: cover;
+    background-position: center;
+    display: block;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+#landing-page header .logo{
+    display: grid;
+    justify-content: flex-end;
+}
+#landing-page header img{
+    width: 50px;
+    height: auto;
+    margin: var(--space-medium);
+}
+
+#landing-page header h1{
+    margin-left: var(--space-medium);
+    margin-top: 0;
+    margin-bottom: var(--space-small);
+    padding: 3px;
+    width: 180px;
+    background-color: black;
+    color: white;
+}
+
+#landing-page h2{
+    margin-left: var(--space-medium);
+    margin-right: var(--space-medium);
+}
+
+#landing-page .content{
+    
+    justify-content: center;
+    text-align: center;
+    margin-bottom: var(--space-bigger);
+}
+ 
+#landing-page .content a{
+    margin: var(--space-big);
+    padding: var(--space-small);
+    font-size: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    background-color: var(--color-green);
+    height: 43px;
+    width: 136px;
+}
+
+.content-item img{
+    width: 320px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.content-item p {
+    margin: 0;
+    margin-bottom: var(--space-medium);
+    width: 300px;
+    padding: 10px;
+    background-color: var(--color-very-light-blue);
+}
+
+.content-item {
+    margin-bottom: var(--space-big);
+    display: grid;
+    text-align: center;
+    justify-content: center;
+}
+
+.content-item h3{
+    margin: 0;
+    margin-bottom: var(--space-medium);
+    background-color: black;
+    color: white;
+    padding-top: var(--space-small);
+    padding-bottom: var(--space-small);
+}
