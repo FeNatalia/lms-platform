@@ -30,14 +30,11 @@ export default function Login() {
         event.preventDefault();
         setErrorMessage("");
         const account = await signIn(form.email, form.password);
-
         account.isLogged ? onSuccess(account.payload) : onFailure(account.payload);
     }
 
     async function onSuccess(uid){
         const document = await getDocument("users", uid)
-        console.log("login.jsx database", uid);
-        //const loggedUser = await getDocument("users", uid)
         setUser(document);
         setIsLogged(true);
         if (remember) localStorage.setItem("uid", uid);
@@ -55,18 +52,21 @@ export default function Login() {
 
     return (
         <div>
-            <h1>Login</h1>
+            <h3>Login to OpenEyes</h3>
             <form onSubmit={onSubmit}>
+                <div>Logo</div>
                 {InputFields}
-                <InputCheckbox state={[remember, setRemember]}>
-                    Remember me
-                </InputCheckbox>
+                <div>
+                    <InputCheckbox state={[remember, setRemember]}>
+                        Remember me
+                    </InputCheckbox>
+                </div>
                 <p>{errorMassage}</p>
                 <div>
                     <button>Login</button>
                 </div>
             </form>
-            <Link to="/signup">Create an account now</Link>
+            <Link to="/signup">Registration</Link>
         </div>
     )
 }
