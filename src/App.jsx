@@ -1,10 +1,11 @@
 // NPM Packages
 import { useCallback, useEffect, useState } from "react";
-import { getCollection, getDocument } from "scripts/fireStore";
+import { getDocument } from "scripts/fireStore";
 
 // Project files
 import { useAuth } from "state/AuthProvider";
 import Browser from "components/Browser";
+
 
 export default function App() {
   // Global state
@@ -26,10 +27,9 @@ export default function App() {
     }, 
     [setUser, setIsLogged]
   );
-
   useEffect(() => fetchUser("users"), [fetchUser]);
 
-  useEffect( () => {
+  /*useEffect( () => {
     getCollection("users").then((result) => {
       console.log(result);
     })
@@ -39,13 +39,12 @@ export default function App() {
     getCollection( "courses").then((result) => {
       console.log(result);
     })
-  }, [])
+  }, [])*/
 
   return (
     <div className="App">
       {status === 0 && <p>Loading</p>}
       {status === 1 && <Browser isLogged={isLogged}/>}
-      {status === 2 && <p>Error</p>}
     </div>
   );
 }

@@ -5,11 +5,14 @@ import ReactDOM from "react-dom";
 // Project files
 import App from "./App";
 import { AuthProvider } from "state/AuthProvider";
+import { ElearningProvider } from "state/ElearningProvider";
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
-      <App />
+      <ElearningProvider>
+        <App />
+      </ElearningProvider>
     </AuthProvider>
   </React.StrictMode>,
   document.getElementById("root")
