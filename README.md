@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# Learning Management System OpenEyes e-learning
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a LMS that gives access to courses. There 2 types of users: Teacher and Student. The data is connected to Firebase Database (Cloud Firestore). The Teacher role can edit courses and can add a new course. Soon you will be able to add files too (work in progress).
 
-## Available Scripts
+## How to use it 
 
-In the project directory, you can run:
+When you start the app, the first page you are going to see is the Landing page, which has a pitch of the school and some information. In the bottom there is a button to the Login page. When you click it, you will be forwarded to the login page. On the login page you can click Register and create a new account. Once you register - you can login with your credentials.
+
+The Home page showcases the courses. Each course has a short description, a photo and a button which will open a more detailed page of that section. The Calendar button on the navigation bar opens the extenral google calendar page. The Logout button will log you out.
+
+Each course consists of a list of files within that course. When you click on the course, it will open a new page with a detailed information about that particular course such as photo, price as well as a short description. You can click on the Go Back button which will send you back to the category page.
+
+The teacher status can be assigned by changing isTeacher from false to true via firebase. The teacher's page shows existing courses and when you click on any category it will open a new page with the particular course's information inside the form which you can edit and save. On the same page you can see if there are files associated with that course.
+
+## How to start 
+
+You need to have npm installed on your computer. In the project terminal first run:
+
+### `npm install`
+
+It would compile the project before you would run it. After this go to the next step:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Runs the app in the development mode.
+Open http://localhost:3000 to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Diagram
 
-### `npm test`
+The diagram/component tree of the project structure: https://whimsical.com/componenttree-6VsU2YGuJd4Lh8oGzypayD
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Prototype
 
-### `npm run build`
+The prototype is made in Figma and available through the link: https://www.figma.com/file/Q4r4rlI9I5DQGXhTJo9rKl/Untitled?node-id=10%3A167
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Link
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The app is hosted on: https://openeyeselearning.web.app
