@@ -34,7 +34,7 @@ export default function SignUp() {
         const newUser = { name: form.name, city: form.city, isTeacher: false };
         await createDocumentWithId("users", uid, newUser);
         alert("Your account is successfully created, please login now");
-        history.push("/");
+        history.push("/login");
     }
 
     function onFailure(message){
@@ -57,6 +57,7 @@ export default function SignUp() {
                 </div>
             </form>
             <Link to="/login">Login instead</Link>
+            <Link to="/">Go to main</Link>
         </div>
     )
 }
