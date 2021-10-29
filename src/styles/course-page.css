@@ -1,0 +1,23 @@
+#course-img{
+    width: 100vw;
+    height: 300px;
+    object-fit: cover;
+}
+
+#course-page .course-content{
+    display: block;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: var(--space-bigger);
+}
+
+#course-page  a{
+    margin: var(--space-big);
+    font-size: 18px;
+    color: black;
+    font-weight: bold;
+}
+
+.files-list{
+    margin-bottom: var(--space-big);
+}

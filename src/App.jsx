@@ -1,6 +1,7 @@
 // NPM Packages
 import { useCallback, useEffect, useState } from "react";
 import { getDocument } from "scripts/fireStore";
+import "styles/styles.css";
 
 // Project files
 import { useAuth } from "state/AuthProvider";

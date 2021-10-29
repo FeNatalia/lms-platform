@@ -9,6 +9,7 @@ import { signIn } from "scripts/authentification";
 import InputCheckbox from "components/InputCheckbox";
 import { getDocument } from "scripts/fireStore";
 import { useAuth } from "state/AuthProvider";
+import Logo from "assets/Logo.png";
 
 export default function Login() {
     // Global state
@@ -51,23 +52,25 @@ export default function Login() {
     ));
 
     return (
-        <div>
-            <h3>Login to OpenEyes</h3>
-            <form onSubmit={onSubmit}>
-                <div>Logo</div>
-                {InputFields}
-                <div>
+        <div id="auth-page">
+            <header>
+                <h3>Login to OpenEyes</h3>
+            </header>
+            <div className="auth-page-content">
+                <form onSubmit={onSubmit}>
+                    <div className="logo">
+                        <img src={Logo} alt="an icon of an eye and a leaf"/>
+                    </div>
+                    {InputFields}
+                    <p>{errorMassage}</p>
                     <InputCheckbox state={[remember, setRemember]}>
                         Remember me
                     </InputCheckbox>
-                </div>
-                <p>{errorMassage}</p>
-                <div>
                     <button>Login</button>
-                </div>
-            </form>
-            <Link to="/signup">Registration</Link>
-            <Link to="/">Go to main</Link>
+                    <Link to="/signup">Registration</Link>
+                    <Link to="/">Go to main</Link>
+                </form>
+            </div>
         </div>
     )
 }

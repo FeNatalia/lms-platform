@@ -1,0 +1,8 @@
+@import "variables.css";
+@import "shared.css";
+
+@import "landing.css";
+@import "auth-pages.css";
+@import "navigation.css";
+@import "home.css";
+@import "course-page.css";

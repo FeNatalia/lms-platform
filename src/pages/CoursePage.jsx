@@ -41,12 +41,17 @@ export default function CoursePage() {
     <FileItem key={item.id} item={item} to={`/dish/${item.id}`} />
     ));
     return (
-        <div>
+        <div id="course-page">
+          <img id="course-img" src={course.imageURL} alt="Category thumbnail" />
+          <div className="course-content">
             <h1>{course.title}</h1>
-            <h2>{course.description}</h2>
-            <h3>Course materials</h3>
-            {Files}
+            <p>{course.description}</p>
+            <h2>Course materials:</h2>
+            {status === 0 && <p>Loading ⏱</p>}
+            {status === 1 && <div className="files-list">{Files}</div>}
+            {status === 2 && <p>Error 🚨</p>}
             <Link to="/">Go back</Link>
+          </div>
         </div>
     )
 }

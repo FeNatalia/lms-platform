@@ -8,10 +8,10 @@ export default function InputField({ onChange, options, state }) {
   const inputReference = useRef(null);
 
   return (
-    <label>
-        <div>
-            {label}
-        </div>
+    <label className="input-field">
+      <div>
+        {label}
+      </div>
       <input
         onChange={() => onChange(key, inputReference.current.value)}
         placeholder={placeholder}
