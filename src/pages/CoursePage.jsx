@@ -45,7 +45,9 @@ export default function CoursePage() {
             <h1>{course.title}</h1>
             <h2>{course.description}</h2>
             <h3>Course materials</h3>
-            {Files}
+            {status === 0 && <p>Loading ⏱</p>}
+            {status === 1 && <div className="products-list">{Files}</div>}
+            {status === 2 && <p>Error 🚨</p>}
             <Link to="/">Go back</Link>
         </div>
     )
