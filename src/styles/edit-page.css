@@ -1,42 +1,42 @@
 .edit-page {
-    display: grid;
-    justify-content: center;
+  display: grid;
+  justify-content: center;
 }
-.edit-page h1{
-    text-align: center;
+.edit-page h1 {
+  text-align: center;
 }
-.edit-page header{
-    margin-top: 80px;
-}
-
-.edit-page section{
-    display: grid;
-    justify-content: center;
+.edit-page header {
+  margin-top: 80px;
 }
 
-.edit-page .link-go-back{
-    display: grid;
-    justify-content: center;
+.edit-page section {
+  display: grid;
+  justify-content: center;
 }
 
-.edit-page .link-go-back a{
-    color: black;
+.edit-page .link-go-back {
+  display: grid;
+  justify-content: center;
 }
 
-.edit-page .button-save{
-    display: grid;
-    justify-content: center;
+.edit-page .link-go-back a {
+  color: black;
 }
 
-.edit-page button{
-    margin: var(--space-big);
-    padding: var(--space-small);
-    font-size: 20px;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: white;
-    background-color: var(--color-green);
-    border: 1px solid var(--color-green);
-    height: 43px;
-    width: 136px;
+.edit-page .button-save {
+  display: grid;
+  justify-content: center;
+}
+
+.edit-page button {
+  margin: var(--space-big);
+  padding: var(--space-small);
+  font-size: 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: white;
+  background-color: var(--color-green);
+  border: 1px solid var(--color-green);
+  height: 43px;
+  width: 136px;
 }

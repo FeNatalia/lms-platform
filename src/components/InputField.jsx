@@ -9,9 +9,7 @@ export default function InputField({ onChange, options, state }) {
 
   return (
     <label className="input-field">
-      <div>
-        {label}
-      </div>
+      <div>{label}</div>
       <input
         onChange={() => onChange(key, inputReference.current.value)}
         placeholder={placeholder}

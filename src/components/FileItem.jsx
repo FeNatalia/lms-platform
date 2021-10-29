@@ -4,7 +4,9 @@ export default function FileItem({ item, to }) {
   return (
     <article className="dish-preview">
       <p>{title}</p>
-      <a href={linkURL} target="_blank" rel="noreferrer">Visit Website</a>
+      <a href={linkURL} target="_blank" rel="noreferrer">
+        Visit Website
+      </a>
     </article>
   );
 }

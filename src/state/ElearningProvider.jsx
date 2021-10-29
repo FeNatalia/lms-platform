@@ -14,9 +14,7 @@ export function ElearningProvider({ children }) {
   const [files, dispatch2] = useReducer(fileReducer, []); // hold the specific document
 
   return (
-    <ElearningContext.Provider
-      value={{ courses, files, dispatch, dispatch2 }}
-    >
+    <ElearningContext.Provider value={{ courses, files, dispatch, dispatch2 }}>
       {children}
     </ElearningContext.Provider>
   );

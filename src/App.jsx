@@ -7,7 +7,6 @@ import "styles/styles.css";
 import { useAuth } from "state/AuthProvider";
 import Browser from "components/Browser";
 
-
 export default function App() {
   // Global state
   const { isLogged, setUser, setIsLogged } = useAuth();
@@ -25,27 +24,15 @@ export default function App() {
         setIsLogged(true);
       }
       setStatus(1);
-    }, 
+    },
     [setUser, setIsLogged]
   );
   useEffect(() => fetchUser("users"), [fetchUser]);
 
-  /*useEffect( () => {
-    getCollection("users").then((result) => {
-      console.log(result);
-    })
-  }, [])
-
-  useEffect( () => {
-    getCollection( "courses").then((result) => {
-      console.log(result);
-    })
-  }, [])*/
-
   return (
     <div className="App">
       {status === 0 && <p>Loading</p>}
-      {status === 1 && <Browser isLogged={isLogged}/>}
+      {status === 1 && <Browser isLogged={isLogged} />}
     </div>
   );
 }
