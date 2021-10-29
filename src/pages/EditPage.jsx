@@ -6,7 +6,6 @@ import { useParams, useHistory, Link } from "react-router-dom";
 import Information from "components/Information";
 import { useElearning } from "state/ElearningProvider";
 import { createDocument, updateDocument } from "scripts/fireStore";
-//import DishList from "../components/DishList";
 
 export default function EditPage() {
   // Global state
@@ -53,16 +52,15 @@ export default function EditPage() {
       </header>
       <section>
         <Information profile={profile} onChange={onChange} />
-        {/*id === "new-profile" ? null : <DishList categoryId={id} />*/}
-            <div className="button-save">
-        <button onClick={() => onSave(profile)} className="button-save">
-                Save
-        </button>
-            </div>
+        <div className="button-save">
+          <button onClick={() => onSave(profile)} className="button-save">
+            Save
+          </button>
+        </div>
         <div className="link-go-back">
-        <Link to="/" id="button-add">
+          <Link to="/" id="button-add">
             Go back
-        </Link>
+          </Link>
         </div>
       </section>
     </div>

@@ -7,13 +7,11 @@ import Unlogged from "routes/Unlogged";
 import Navigation from "./Navigation";
 
 export default function Browser({ isLogged }) {
-    // Global state
-    return (
-        <BrowserRouter>
-            <Navigation/>
-            <Switch>
-                {isLogged? <Logged/> : <Unlogged/>}
-            </Switch>
-        </BrowserRouter>
-    );
-} 
+  // Global state
+  return (
+    <BrowserRouter>
+      <Navigation />
+      <Switch>{isLogged ? <Logged /> : <Unlogged />}</Switch>
+    </BrowserRouter>
+  );
+}

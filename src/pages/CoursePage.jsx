@@ -9,7 +9,7 @@ import { useElearning } from "state/ElearningProvider";
 import { getCollection } from "scripts/fireStore";
 
 export default function CoursePage() {
-    // Global state
+  // Global state
   const { courses, dispatch2 } = useElearning();
   const { courseId } = useParams();
 
@@ -22,36 +22,39 @@ export default function CoursePage() {
   const path = `courses/${courseId}/files`;
 
   // Methods
-  const fetchData = useCallback(async (path) => {
-    try {
-      const files = await getCollection(path);
+  const fetchData = useCallback(
+    async (path) => {
+      try {
+        const files = await getCollection(path);
 
-      setFiles(files);
-      dispatch2({ type: "SET_DISHES", payload: files });
-      setStatus(1);
-    } catch {
-      setStatus(2);
-    }
-  }, [dispatch2]);
+        setFiles(files);
+        dispatch2({ type: "SET_DISHES", payload: files });
+        setStatus(1);
+      } catch {
+        setStatus(2);
+      }
+    },
+    [dispatch2]
+  );
 
   useEffect(() => fetchData(path), [fetchData, path]);
 
-    // Components
-    const Files = files.map((item) => (
+  // Components
+  const Files = files.map((item) => (
     <FileItem key={item.id} item={item} to={`/dish/${item.id}`} />
-    ));
-    return (
-        <div id="course-page">
-          <img id="course-img" src={course.imageURL} alt="Category thumbnail" />
-          <div className="course-content">
-            <h1>{course.title}</h1>
-            <p>{course.description}</p>
-            <h2>Course materials:</h2>
-            {status === 0 && <p>Loading ⏱</p>}
-            {status === 1 && <div className="files-list">{Files}</div>}
-            {status === 2 && <p>Error 🚨</p>}
-            <Link to="/">Go back</Link>
-          </div>
-        </div>
-    )
+  ));
+  return (
+    <div id="course-page">
+      <img id="course-img" src={course.imageURL} alt="Category thumbnail" />
+      <div className="course-content">
+        <h1>{course.title}</h1>
+        <p>{course.description}</p>
+        <h2>Course materials:</h2>
+        {status === 0 && <p>Loading ⏱</p>}
+        {status === 1 && <div className="files-list">{Files}</div>}
+        {status === 2 && <p>Error 🚨</p>}
+        <Link to="/">Go back</Link>
+      </div>
+    </div>
+  );
 }

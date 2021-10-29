@@ -6,7 +6,6 @@ import {
 
 // Project files
 import { authInstance } from "./firebase";
-//import { onAuthStateChanged } from "firebase/auth";
 
 export async function createAccount(email, password) {
   const account = { isCreated: false, payload: "" };
