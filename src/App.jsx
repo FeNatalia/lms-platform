@@ -14,29 +14,11 @@ export default function App() {
   const [status, setStatus] = useState(0);
 
   // Methods
-  /*const fetchUser = useCallback(
-    async (path, auth) => {
-      try {
-        const user = await getDocument(path, auth);
-        setUser(user);
-        setIsLogged(true);
-        setStatus(1);
-      } catch (error) {
-        console.log("Error loading profile", error);
-        setStatus(2);
-      }
-    }, 
-    [setUser, setIsLogged]
-  );*/
-
   const fetchUser = useCallback(
     async (path) => {
       const uid = localStorage.getItem("uid");
-      console.log("App.jsx", uid)
-
       if (uid) {
         const user = await getDocument(path, uid);
-
         setUser(user);
         setIsLogged(true);
       }
@@ -46,10 +28,6 @@ export default function App() {
   );
 
   useEffect(() => fetchUser("users"), [fetchUser]);
-
-  /*useEffect(() => {
-    if (auth !== "") fetchUser("users", auth);
-  }, [fetchUser, auth]);*/
 
   useEffect( () => {
     getCollection("users").then((result) => {
