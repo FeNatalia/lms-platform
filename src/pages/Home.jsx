@@ -1,28 +1,50 @@
 // NPM Packages
-import { useHistory } from "react-router"
+import CourseItem from "components/CourseItem";
+import { useCallback, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { getCollection } from "scripts/fireStore";
 
 // Project files
 import { useAuth } from "state/AuthProvider";
+import { useElearning } from "state/ElearningProvider";
 
 export default function Home() {
     // Global state
-    const { user, setUser, setIsLogged } = useAuth();
-    const history = useHistory();
+    const { user } = useAuth();
+    const { courses } = useElearning();
+    const { dispatch } = useElearning();
 
-    // Methods
-    function onLogout() {
-        localStorage.setItem("uid", "");
-        setUser({});
-        setIsLogged(false);
-        history.push("/login");
-    }
+    // Local state
+    const path = "courses";
+
+    /*useEffect( () => {
+        getCollection( "courses").then((result) => {
+            console.log(result);
+        })
+    }, [])*/
+
+    // Methods 
+    const fetchData = useCallback(async (path) => {
+        const courses = await getCollection(path);
+        dispatch({ type: "SET_CATEGORIES", payload: courses });
+    }, [dispatch]);
+    
+    useEffect(() => fetchData(path), [fetchData]);
+
+    // Components
+    const CourseItems = courses.map((item) => (
+    <Link key={item.id} to={`/courses/${item.id}`}>
+      <CourseItem item={item} />
+    </Link>
+    ));
 
     return (
         <div>
-            <h1>Home</h1>
+            {user.isTeacher? <h3>My teaching</h3> : <h3>My learning</h3>}
             <p>Welcome to OpenEyes E-learning, {user.name}</p>
-            {user.isTeacher? <p>you are the teacher</p> : <p>you are the student</p>}
-            <button onClick={onLogout}>Logout</button>
+            <h2>My courses</h2>
+            {CourseItems}
+            {user.isTeacher && <button>Add course</button>}
         </div>
     )
 }

@@ -67,6 +67,7 @@ export default function Login() {
                 </div>
             </form>
             <Link to="/signup">Registration</Link>
+            <Link to="/">Go to main</Link>
         </div>
     )
 }
