@@ -7,6 +7,7 @@ import Login from "pages/Login";
 import SignUp from "pages/SignUp";
 import CoursePage from "pages/CoursePage";
 import FilePage from "pages/FilePage";
+import EditPage from "pages/EditPage";
 
 export default function Logged() {
     return(
@@ -16,7 +17,7 @@ export default function Logged() {
         <Route path="/signup" component={SignUp} />
         <Route component={CoursePage} path="/courses/:courseId" />
         <Route component={FilePage} path="/file/:fileId" />
-
+        <Route component={EditPage} path="/edit/:id" />
         </>
     )
 }

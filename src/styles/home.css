@@ -70,3 +70,26 @@
 .course-item{
     width: 300px;
 }
+
+#edit-link a{
+    text-decoration: underline;
+    font-weight: bold;
+    margin-left: var(--space-medium);
+}
+
+#add-course{
+    margin-top: var(--space-big);
+}
+#add-course a{
+    margin: var(--space-big);
+    padding: var(--space-small);
+    font-size: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    background-color: var(--color-green);
+    border: 1px solid var(--color-green);
+    height: 43px;
+    width: 136px;
+}
+

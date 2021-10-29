@@ -34,9 +34,13 @@ export default function Home() {
     // Components
     const CourseItems = courses.map((item) => (
     <Link key={item.id} to={`/courses/${item.id}`}>
-      <CourseItem item={item} />
+      <CourseItem key={item.id} item={item} />
     </Link>
     ));
+
+    const TeacherCourseItems = courses.map((item) => (
+          <CourseItem item={item} to={`edit/${item.id}`}/>
+        ));
 
     return (
         <div id="home-page">
@@ -47,9 +51,9 @@ export default function Home() {
                 <p>You logged in as {user.name}</p>
                 <h2>My courses</h2>
                 <div className="courses">
-                    {CourseItems}
+                    {user.isTeacher ? TeacherCourseItems : CourseItems}
                 </div>
-                {user.isTeacher && <button>Add course</button>}
+                {user.isTeacher && <div id="add-course"><Link to="edit/new-profile">Add course</Link></div>}
             </div>
         </div>
     )
