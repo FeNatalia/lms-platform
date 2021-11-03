@@ -33,6 +33,7 @@ export default function App() {
     <div className="App">
       {status === 0 && <p>Loading</p>}
       {status === 1 && <Browser isLogged={isLogged} />}
+      {/* Where is the status = 2, becuase if the login fail we would get stuck at loading forever */}
     </div>
   );
 }

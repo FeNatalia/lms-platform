@@ -10,6 +10,7 @@ export default function LandingPage() {
   const Content = JSONContent.map((item) => (
     <ContentItem key={item.id} item={item} />
   ));
+
   return (
     <div id="landing-page">
       <header>
