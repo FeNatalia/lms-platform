@@ -10,7 +10,7 @@ The Home page showcases the courses. Each course has a short description, a phot
 
 Each course consists of a list of files within that course. When you click on the course, it will open a new page with a detailed information about that particular course such as photo, price as well as a short description. You can click on the Go Back button which will send you back to the category page.
 
-The teacher status can be assigned by changing isTeacher from false to true via firebase. The teacher's page shows existing courses and when you click on any category it will open a new page with the particular course's information inside the form which you can edit and save. On the same page you can see if there are files associated with that course.
+The teacher status can be assigned by changing isTeacher from false to true via firebase (you can also login with email: natalia@gmail.com password: 12345678). The teacher's page shows existing courses and when you click on any category it will open a new page with the particular course's information inside the form which you can edit and save. On the same page you can see if there are files associated with that course.
 
 ## How to start 
 
